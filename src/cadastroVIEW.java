@@ -140,8 +140,9 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        ProdutosDTO produto = new ProdutosDTO();
-        String nome = cadastroNome.getText();
+        try{
+            ProdutosDTO produto = new ProdutosDTO();
+            String nome = cadastroNome.getText();
         String valor = cadastroValor.getText();
         String status = "A Venda";
         produto.setNome(nome);
@@ -150,7 +151,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
         
         ProdutosDAO produtodao = new ProdutosDAO();
         produtodao.cadastrarProduto(produto);
-        
+        } catch (NumberFormatException erro) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Erro ao cadastrar: digite apenas números inteiros no campo Valor.");
+        }
+               
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
